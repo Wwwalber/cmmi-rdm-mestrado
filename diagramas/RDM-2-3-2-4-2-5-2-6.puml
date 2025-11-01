@@ -1,0 +1,44 @@
+@startuml RDM-2-3-2-4-2-5-2-6
+title RDM 2.3 a 2.6 - Entendimento, Compromisso, Rastreabilidade e Consistência
+
+|Requirements Analyst|
+start
+:Preparar sessão de revisão\ncom provedores (dev/arquitetura);
+|Provider (Dev/Arquitetura)|
+:Participar da revisão para\ndesenvolver entendimento;
+|Requirements Analyst|
+:Apresentar requisitos, critérios\nde aceitação e exemplos de uso;
+if (Divergência de entendimento?) then (sim)
+  :Registrar dúvidas e questões;
+  :Negociar formulação/escopo\ncom stakeholders e PM;
+  :Atualizar requisito conforme acordado;
+else (não)
+endif
+note right: **RDM 2.3** - Entendimento comum
+|Provider (Dev/Arquitetura)|
+:Avaliar esforço e viabilidade\n(técnica, cronograma, recursos);
+|Project Manager|
+:Tomar decisão de implementação\n/ negociar mudança de escopo;
+if (Provider pode implementar?) then (sim)
+  :Obter compromisso formal\n(assinatura/aceite, comentário em Issue);
+  note right: **RDM 2.4** - Compromisso
+else (não)
+  :Registrar impedimentos e alternativas;
+  :Voltar para negociação;
+  stop
+endif
+|Configuration Management|
+:Criar/Atualizar ligações de rastreabilidade\n(requisito ↔ casos de teste, tarefas, design);
+note right: **RDM 2.5** - Rastreabilidade bidirecional
+|Requirements Analyst|
+:Manter rastreabilidade bidirecional\ne verificar integridade;
+:Monitorar mudanças nos requisitos;
+if (Mudança detectada?) then (sim)
+  :Executar análise de impacto\nnas atividades, planos e produtos;
+  :Atualizar planos/atividades para\nmanter consistência com requisitos;
+  note right: **RDM 2.6** - Consistência
+  :Notificar interessados e obter\nnovo comprometimento se necessário;
+else (não)
+endif
+stop
+@enduml
