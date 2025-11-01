@@ -1,0 +1,35 @@
+@startuml RDM-Overall
+title Fluxo Geral RDM - CMMI 2.0 Nível 1 e 2
+
+|Project Manager|
+start
+:Planejar RDM\n(escopo, responsabilidades, ferramentas);
+|Requirements Analyst|
+:Registrar requisitos inicial\n**(RDM 1.1)**;
+:Preparar elicitação;
+|Stakeholders|
+:Fornecer necessidades, restrições\ne interfaces **(RDM 2.1)**;
+|Requirements Analyst|
+:Transformar e priorizar em\nrequisitos do cliente **(RDM 2.2)**;
+|Provider (Dev/Arquitetura)|
+:Revisar e clarificar\nrequisitos **(RDM 2.3)**;
+|Project Manager|
+:Negociar viabilidade e obter\ncompromisso **(RDM 2.4)**;
+|Configuration Management|
+:Estabelecer e manter rastreabilidade\nbidirecional **(RDM 2.5)**;
+|Requirements Analyst|
+:Assegurar consistência entre\nplanos/atividades e requisitos **(RDM 2.6)**;
+if (Requisitos mudam?) then (sim)
+  :Executar impacto, atualizar\nrastreabilidade e planos;
+  :Re-obter comprometimento\nse necessário;
+  backward:Voltar para RDM 2.3;
+else (não)
+endif
+stop
+
+legend right
+  |<back:lightblue>   </back>| Nível 1 |
+  |<back:lightgreen>   </back>| Nível 2 |
+endlegend
+
+@enduml
