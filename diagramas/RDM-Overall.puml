@@ -1,150 +1,446 @@
-@startuml RDM-Overall
-title RDM CMMI 2.0 - Práticas Ágeis\nEstrutura por Papéis e Fases Iterativas
+@startuml RDM_Agil_Iterativo
 
-' === FASE 1: PRODUCT BACKLOG MANAGEMENT (Contínuo) ===
+title RDM CMMI 2.0 - Práticas Ágeis (Ciclo Iterativo)\nCada Sprint repete o ciclo completo de gerenciamento de requisitos
 
-partition "FASE 1: Product Backlog Management (Contínuo)" {
-  start
-  :**RDM 1.1** - Criar User Stories iniciais no Product Backlog;
-  note right
-    Artefato: Product Backlog
-    Formato: User Stories
-  end note
+!define LIGHTBLUE E3F2FD
+!define LIGHTGREEN E8F5E9
+!define LIGHTYELLOW FFF9C4
+!define LIGHTPINK FCE4EC
 
-  :**RDM 2.1** - Elicitar necessidades com stakeholders;
+' === LEGENDA ===
+legend right
+|<#LIGHTBLUE> Product Owner |
+|<#LIGHTGREEN> Time Ágil |
+|<#LIGHTYELLOW> Scrum Master |
+|<#LIGHTPINK> Stakeholders |
+  
+  **Ciclo:** Este fluxo se repete
+  a cada Sprint (2-4 semanas)
+endlegend
 
-  :Fornecer feedback e necessidades de negócio;
-  :Participar de workshops de Discovery;
+|Product Owner| #LIGHTBLUE
+|Scrum Master| #LIGHTYELLOW
+|Time Ágil| #LIGHTGREEN
+|Stakeholders| #LIGHTPINK
+|Product Owner| #LIGHTBLUE
 
-  :**RDM 2.2** - Realizar Backlog Refinement (toda a equipe);
+start
 
-  repeat
-    :Refinar User Stories;
-    :Estimar (Planning Poker);
-    :Priorizar (MoSCoW, WSJF);
+' === INÍCIO DO CICLO ITERATIVO ===
+:INÍCIO DA SPRINT N;
+
+:<b>FASE 1 · Product Backlog Management (Contínuo)</b>;
+  
+|Product Owner|
+  if (Primeira vez no projeto?) then (sim)
+    :**RDM 1.1**
+    Criar User Stories iniciais
+    no Product Backlog;
     note right
-      Colaboração cross-funcional:
-      - PO: prioriza valor
-      - Dev: estima esforço
-      - QA: identifica testabilidade
-    end note
-  repeat while (Backlog pronto\npara Planning?) is (não)
-
-}
-
-' === FASE 2: SPRINT PLANNING ===
-
-partition "FASE 2: Sprint Planning" {
-
-  :Facilitar Sprint Planning;
-
-  :**RDM 2.3** - Alinhar entendimento sobre User Stories da Sprint;
-
-  repeat
-    :Realizar "Três Amigos" (PO, Dev, QA);
-    :Definir Critérios de Aceitação;
-    :Criar cenários BDD;
-    note right
-      Técnicas:
-      - Example Mapping
-      - Acceptance Test-Driven Development
-      - Definition of Done (DoD)
-    end note
-  repeat while (Consenso\nalcançado?) is (não)
-
-  :**RDM 2.4** - Obter compromisso do Time;
-
-  :Declarar capacidade da Sprint;
-  :Comprometer-se com Sprint Goal e User Stories;
-
-  if (Time confiante\nna entrega?) then (sim)
-    note right
-      Artefatos:
-      - Sprint Backlog
-      - Sprint Goal
-      - Tasks decompostas
+      📋 **Artefatos:**
+      • Product Backlog (Jira/Azure DevOps)
+      • User Stories (formato: Como...Quero...Para...)
+      • Épicos de alto nível
+      ▬▬▬▬▬▬▬▬▬▬▬▬
+      **Ferramentas Sugeridas:**
+      Jira, Azure DevOps, Trello
     end note
   else (não)
-    :Re-negociar escopo com Product Owner;
+    :Product Backlog já existe
+    (refinamento contínuo);
+  endif
+  
+  :**RDM 2.1**
+  Elicitar necessidades
+  dos stakeholders;
+  
+|Stakeholders| #LIGHTPINK
+  :Fornecer feedback sobre
+  o produto atual;
+  :Apresentar novas necessidades;
+  :Validar protótipos/wireframes;
+  
+|Product Owner|
+  :Documentar descobertas
+  em User Stories;
+  note right
+    📋 **Artefatos:**
+    • Atas de Discovery Workshops
+    • User Stories atualizadas
+    • Protótipos/Wireframes
+    • Story Map (se aplicável)
+  end note
+  
+|Time Ágil| #LIGHTGREEN
+  :**RDM 2.2**
+  Backlog Refinement
+  (Grooming Session);
+  
+  :Decompor Épicos em
+  User Stories menores;
+  :Estimar usando Planning Poker
+  (Story Points ou T-shirt sizes);
+  :Priorizar usando técnica
+  (ex: MoSCoW, WSJF, Value vs Effort);
+  
+  note right
+    📋 **Artefatos:**
+    • Product Backlog Refinado
+    • Story Points estimados
+    • Matriz de Priorização
+    • Definition of Ready (DoR)
+    ▬▬▬▬▬▬▬▬▬▬▬▬
+    **DoR Exemplo:**
+    ✓ User Story segue template
+    ✓ Critérios de Aceitação definidos
+    ✓ Estimado pelo Time
+    ✓ Dependências identificadas
+    ✓ Testável
+  end note
+  
+  if (Backlog tem User Stories
+  prontas para Planning?) then (não)
+    :Agendar nova sessão
+    de refinamento;
+    -[#red]-> Continua refinando;
+    detach
+  else (sim)
+  endif
+  
+:<b>FASE 2 · Sprint Planning</b>;
+  
+|Scrum Master| #LIGHTYELLOW
+  :Facilitar Sprint Planning
+  (timebox: 4-8h para Sprint de 2-4 semanas);
+  
+|Product Owner|
+  :Apresentar User Stories
+  priorizadas do topo do Backlog;
+  
+|Time Ágil| #LIGHTGREEN
+  :**RDM 2.3**
+  Alinhar entendimento comum
+  sobre requisitos;
+  
+  :Realizar técnica "Três Amigos"
+  (PO + Dev + QA);
+  :Esclarecer ambiguidades
+  das User Stories;
+  :Definir/Revisar Critérios
+  de Aceitação;
+  :Criar cenários de teste
+  em formato BDD (Gherkin);
+  
+  note right
+    📋 **Artefatos:**
+    • User Stories detalhadas
+    • Acceptance Criteria (formato GIVEN/WHEN/THEN)
+    • Cenários BDD (Gherkin)
+    • Definition of Done (DoD)
+    • Glossário Ubíquo (DDD)
+    ▬▬▬▬▬▬▬▬▬▬▬▬
+    **Exemplo BDD:**
+    Feature: Login de usuário
+    
+    Scenario: Login com credenciais válidas
+      Given que estou na página de login
+      When preencho email "user@test.com"
+      And preencho senha "senha123"
+      And clico em "Entrar"
+      Then devo ver o dashboard
+      And devo ver mensagem "Bem-vindo!"
+    ▬▬▬▬▬▬▬▬▬▬▬▬
+    **DoD Exemplo:**
+    ✓ Código revisado (Pull Request)
+    ✓ Testes unitários passando (>80% cobertura)
+    ✓ Testes BDD implementados
+    ✓ Documentação atualizada
+    ✓ Deploy em ambiente de staging
+    ✓ Aceito pelo PO
+  end note
+  
+  repeat
+    if (Todos têm o mesmo
+    entendimento?) then (não)
+      :Esclarecer dúvidas;
+    else (sim)
+    endif
+  repeat while (Consenso alcançado?) is (não)
+  ->sim;
+  
+  :**RDM 2.4**
+  Obter compromisso do Time;
+  
+|Time Ágil|
+  :Decompor User Stories
+  em Tasks técnicas;
+  :Avaliar capacidade da Sprint
+  (velocidade histórica);
+  :Comprometer-se com
+  User Stories selecionadas;
+  
+  if (Time confiante na entrega?) then (sim)
+|Scrum Master|
+    :Formalizar Sprint Goal
+    e Sprint Backlog;
+    note right
+      📋 **Artefatos:**
+      • **Sprint Goal** (objetivo da Sprint)
+      • **Sprint Backlog** (US comprometidas)
+      • Tasks decompostas (quadro Kanban)
+      • Burndown Chart (baseline)
+      • Velocity Chart
+      ▬▬▬▬▬▬▬▬▬▬▬▬
+      **Exemplo Sprint Goal:**
+      "Permitir que usuários façam
+      login e recuperem senha,
+      aumentando a taxa de conversão"
+    end note
+  else (não)
+|Product Owner|
+    :Negociar escopo reduzido;
+    :Remover User Stories de
+    menor prioridade;
+    -[#red]-> Retorna ao planejamento;
     detach
   endif
-
-}
-
-' === FASE 3: SPRINT EXECUTION ===
-
-partition "FASE 3: Sprint Execution (2-4 semanas)" {
-
-  :**RDM 2.5** - Implementar User Stories com rastreabilidade;
-
-  :Vincular código a US (commits com #US-ID);
-  :Criar testes automatizados referenciando US;
-  :Atualizar CI/CD pipeline;
+  
+:<b>FASE 3 · Sprint Execution (Daily Loop)</b>;
+  
+|Time Ágil| #LIGHTGREEN
+  :**RDM 2.5**
+  Implementar User Stories
+  com rastreabilidade automática;
+  
+  :Criar branch no Git
+  referenciando User Story;
+  :Desenvolver funcionalidade;
+  :Escrever testes automatizados
+  (unitários, integração, BDD);
+  :Fazer commits vinculando
+  código à User Story;
   note right
-    Rastreabilidade Ágil:
-    - Git commits → User Story
-    - Testes BDD → Critérios de Aceitação
-    - Build → Sprint Backlog
+    📋 **Artefatos de Rastreabilidade:**
+    • Git commits com tags (#US-123)
+    • Pull Requests vinculados a US
+    • Testes automatizados (JUnit, Cucumber)
+    • Pipeline CI/CD (Jenkins, GitLab CI)
+    • Relatórios de Build
+    • Code Coverage (SonarQube)
+    ▬▬▬▬▬▬▬▬▬▬▬▬
+    **Exemplo Commit:**
+    git commit -m "#US-123 Implementa 
+    validação de email no cadastro
+    
+    - Adiciona regex para validar formato
+    - Implementa teste unitário
+    - Atualiza cenário BDD"
+    ▬▬▬▬▬▬▬▬▬▬▬▬
+    **Rastreabilidade Bidirecional:**
+    User Story ↔ Tasks
+    User Story ↔ Git Commits
+    User Story ↔ Testes BDD
+    User Story ↔ Build/Deploy
+    User Story ↔ Bugs
   end note
-
-  :**RDM 2.6** - Monitorar progresso diário;
-
+  
+  :Executar pipeline CI/CD;
+  :Deploy automático em
+  ambiente de staging;
+  
+|Time Ágil| #LIGHTGREEN
+  :**RDM 2.6**
+  Monitorar progresso e
+  consistência diariamente;
+  
   repeat
-    :Daily Scrum (15 min);
-    :Verificar impedimentos;
-
-    if (Mudança de\nrequisito?) then (sim)
-  :Avaliar impacto;
-
-      if (Crítica para\nSprint atual?) then (sim)
-  :Ajustar Sprint Backlog;
-  :Atualizar rastreabilidade;
-        note right
-          Flexibilidade Ágil:
-          Mudanças aceitas, mas
-          negociadas com o Time
-        end note
+    :Daily Scrum (15 min, mesmo
+    horário, mesmo local);
+    note right
+      **3 Perguntas do Daily:**
+      1. O que fiz ontem?
+      2. O que farei hoje?
+      3. Há algum impedimento?
+      ▬▬▬▬▬▬▬▬▬▬▬▬
+      **Inspeção de RDM:**
+      • User Stories estão claras?
+      • Critérios de Aceitação são suficientes?
+      • Alguma mudança de requisito?
+    end note
+    
+    :Atualizar Burndown Chart;
+    :Mover cards no Kanban
+    (To Do → Doing → Done);
+    
+    if (Mudança de requisito
+    identificada?) then (sim)
+|Product Owner|
+      :Avaliar impacto e urgência
+      da mudança;
+      
+      if (Mudança crítica para
+      Sprint atual?) then (sim)
+|Time Ágil|
+        :Reunião emergencial para
+        avaliar impacto técnico;
+        
+        if (Time aceita a mudança?) then (sim)
+          :Atualizar User Story;
+          :Atualizar Critérios de Aceitação;
+          :Atualizar cenários BDD;
+          :Re-estimar se necessário;
+          note right
+            📋 **Artefatos de Mudança:**
+            • User Story atualizada (versionada)
+            • Change Log no Jira
+            • Sprint Backlog revisado
+            • Tasks re-priorizadas
+            • Comunicação via Slack/Teams
+          end note
+          :Atualizar matriz de
+          rastreabilidade;
+        else (não)
+|Product Owner|
+          :Adicionar mudança ao
+          Product Backlog para
+          próxima Sprint;
+        endif
       else (não)
-  :Adicionar ao Product Backlog para próxima Sprint;
+        :Adicionar ao Product Backlog
+        (próxima Sprint);
       endif
     else (não)
+      :Continuar desenvolvimento;
     endif
-
-  repeat while (Sprint\nem andamento?) is (sim)
-
-}
-
-' === FASE 4: SPRINT REVIEW & RETROSPECTIVE ===
-
-partition "FASE 4: Sprint Review & Retrospective" {
-
-  :Sprint Review: Demonstrar incremento;
-
-  :**RDM 2.6 (continuação)** - Validar User Stories contra Definition of Done;
-
-  if (Incremento\naceito?) then (sim)
-    :Marcar User Stories como "Done";
-    :Atualizar Product Backlog;
-
-  :Sprint Retrospective: Inspecionar processo de requisitos;
-    :Identificar melhorias (ex: melhorar DoR, refinar técnicas de elicitação);
-    note right
-      Melhoria Contínua:
-      - O que funcionou bem?
-      - O que pode melhorar no RDM?
-      - Ações para próxima Sprint
-    end note
-
-    :Aplicar aprendizados na próxima iteração;
-
+    
+|Scrum Master|
+    :Identificar e remover
+    impedimentos;
+    
+  repeat while (Sprint em andamento?\n(até completar time-box)) is (sim)
+  ->não;
+  
+:<b>FASE 4 · Sprint Review & Retrospective</b>;
+  
+|Stakeholders| #LIGHTPINK
+  :Sprint Review
+  (timebox: 2-4h);
+  :Demonstrar incremento
+  de software funcionando;
+  :Apresentar User Stories
+  completadas;
+  
+|Product Owner|
+  :Validar cada User Story
+  contra Definition of Done;
+  :Testar funcionalidades
+  no ambiente de staging;
+  :Verificar Critérios de Aceitação;
+  
+  note right
+    📋 **Artefatos de Validação:**
+    • Checklist DoD
+    • Relatório de testes executados
+    • Feedback dos Stakeholders
+    • Demo gravada (opcional)
+    • Increment (produto potencialmente entregável)
+  end note
+  
+  if (Todas as User Stories
+  atendem DoD?) then (sim)
+    :Marcar User Stories
+    como "Done" no Jira;
+    :Atualizar Velocity da Sprint;
+    :Atualizar Release Burndown;
+    
+|Stakeholders|
+    :Fornecer feedback sobre
+    o incremento;
+    :Sugerir melhorias para
+    próximas Sprints;
+    
+|Product Owner|
+    :Atualizar Product Backlog
+    baseado no feedback;
+    :Re-priorizar se necessário;
+    
   else (não)
-    :Mover User Stories não aceitas de volta ao Product Backlog;
+    :Mover User Stories não aceitas
+    de volta ao Product Backlog;
+    :Registrar razões da não aceitação;
+    note right
+      📋 **Artefato:**
+      • Log de User Stories rejeitadas
+      • Ações corretivas para próxima Sprint
+    end note
   endif
+  
+|Time Ágil| #LIGHTGREEN
+  :Sprint Retrospective
+  (timebox: 1.5-3h);
+  :Inspecionar o processo
+  de trabalho da Sprint;
+  
+  note right
+    **Formato Retrospectiva:**
+    🟢 O que funcionou bem?
+    🔴 O que pode melhorar?
+    💡 Ações para próxima Sprint
+    ▬▬▬▬▬▬▬▬▬▬▬▬
+    **Questões sobre RDM:**
+    • User Stories estavam claras?
+    • DoR/DoD foram efetivos?
+    • Elicitação foi suficiente?
+    • Rastreabilidade funcionou?
+    • Mudanças foram bem gerenciadas?
+  end note
+  
+  :Identificar melhorias no
+  processo de requisitos;
+  :Definir ações concretas
+  (com responsável e prazo);
+  
+  note right
+    📋 **Artefatos:**
+    • Ata da Retrospectiva
+    • Action Items (com responsável)
+    • Métricas de melhoria contínua
+    • Atualização do DoR/DoD (se necessário)
+    ▬▬▬▬▬▬▬▬▬▬▬▬
+    **Exemplo de Ação:**
+    ✓ Melhorar template de User Story
+      (Responsável: PO, Prazo: próxima Sprint)
+    ✓ Adicionar sessão de refinamento extra
+      (Responsável: SM, Prazo: imediato)
+  end note
+  
+  :Aplicar lições aprendidas
+  no próximo ciclo;
+  
+' === LOOP ITERATIVO ===
+|Product Owner|
+:FIM DA SPRINT N;
 
-}
+note right
+  🔄 **ITERATIVIDADE:**
+  O ciclo completo se repete
+  a cada Sprint (2-4 semanas)
+  
+  Próximo ciclo (Sprint N+1):
+  • Product Backlog refinado com feedback
+  • Velocity atualizada
+  • DoR/DoD melhorados
+  • Processo otimizado
+end note
 
- :Preparar próximo ciclo (volta à Fase 1);
-
-stop
+if (Produto completo ou
+projeto cancelado?) then (não)
+  :INÍCIO DA SPRINT N+1;
+  -[#green,bold]-> Retorna à Fase 1;
+  detach
+else (sim)
+  :Release final do produto;
+  stop
+endif
 
 @enduml

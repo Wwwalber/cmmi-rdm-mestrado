@@ -1,0 +1,81 @@
+@startuml RDM_Agil_Compacto
+
+title RDM CMMI 2.0 + Práticas Ágeis (Visão Compacta)
+
+skinparam swimlane {
+  BackgroundColor<<PO>> LightBlue
+  BackgroundColor<<Team>> LightGreen
+  BackgroundColor<<SM>> LightYellow
+  BackgroundColor<<Stakeholder>> LightPink
+}
+
+|Product Owner| <<PO>>
+start
+:📝 **RDM 1.1 + 2.1**
+Criar/Elicitar User Stories|
+note right
+  🎯 Product Backlog
+  📋 User Stories
+  🗣️ Workshops
+end note
+
+|Time Ágil| <<Team>>
+:⚙️ **RDM 2.2**
+Refinar e Priorizar Backlog|
+note right
+  📊 Story Points
+  🎲 Planning Poker
+  ✅ DoR
+end note
+
+:🤝 **RDM 2.3 + 2.4**
+Sprint Planning
+(Entendimento + Compromisso)|
+note right
+  🎯 Sprint Goal
+  📝 Sprint Backlog
+  ✅ DoD
+  🥒 BDD Scenarios
+end note
+
+repeat
+  :💻 **RDM 2.5**
+  Desenvolver com Rastreabilidade|
+  note right
+    🔗 Git commits → US
+    🧪 Testes BDD
+    🚀 CI/CD
+  end note
+  
+  :👥 **RDM 2.6**
+  Daily Scrum
+  (Monitorar mudanças)|
+  
+  if (Mudança?) then (sim)
+    :Avaliar impacto;
+    if (Aceita?) then (sim)
+      :Atualizar US;
+    else (não)
+      :Adicionar ao Backlog;
+    endif
+  endif
+  
+repeat while (Sprint ativa?) is (sim)
+->não;
+
+|Stakeholders| <<Stakeholder>>
+:📺 Sprint Review
+(Validação)|
+
+|Time Ágil| <<Team>>
+:🔄 Retrospective
+(Melhoria contínua)|
+
+if (Mais Sprints?) then (sim)
+  -[#green]-> Próxima Sprint;
+  detach
+else (não)
+  stop
+endif
+
+@enduml
