@@ -1,0 +1,27 @@
+---- diagramas/RDM-Overall.puml
+(0.000 - 126 Mo) 119 Mo - PlantUML Version 1.2020.02
+(0.012 - 126 Mo) 119 Mo - GraphicsEnvironment.isHeadless() false
+(0.012 - 126 Mo) 119 Mo - Forcing resource load on OpenJdk
+(0.082 - 126 Mo) 118 Mo - Found 1 files
+(0.082 - 126 Mo) 118 Mo - Working on /home/walber/Projetos/2025/MESTRADO-2025-2/cmmi-rdm-mestrado/diagramas/RDM-Overall.puml
+(0.112 - 126 Mo) 117 Mo - Setting current dir: .
+(0.112 - 126 Mo) 117 Mo - Setting current dir: /home/walber/Projetos/2025/MESTRADO-2025-2/cmmi-rdm-mestrado/diagramas
+(0.112 - 126 Mo) 117 Mo - Using default charset
+(0.117 - 126 Mo) 116 Mo - Reading from RDM-Overall.puml
+(0.205 - 126 Mo) 118 Mo - Reading file: diagramas/RDM-Overall.puml
+(0.206 - 126 Mo) 118 Mo - name from block=RDM-Overall
+(0.206 - 126 Mo) 118 Mo - Checking=RDM-Overall
+(0.207 - 126 Mo) 118 Mo - f=RDM-Overall
+(0.207 - 126 Mo) 118 Mo - Relative, so let's change it
+(0.207 - 126 Mo) 118 Mo - f=/home/walber/Projetos/2025/MESTRADO-2025-2/cmmi-rdm-mestrado/diagramas/RDM-Overall
+(0.207 - 126 Mo) 118 Mo - It's not a directory
+(0.207 - 126 Mo) 118 Mo - RDM-Overall is not taken as a directory
+(0.207 - 126 Mo) 118 Mo - We are going to put data in /home/walber/Projetos/2025/MESTRADO-2025-2/cmmi-rdm-mestrado/diagramas/RDM-Overall[0]
+(0.471 - 126 Mo) 106 Mo - Compilation duration 263
+(0.471 - 126 Mo) 106 Mo - Regex total/invoked/compiled 178/174/124
+(0.471 - 126 Mo) 106 Mo - Matches created 198
+(0.472 - 126 Mo) 106 Mo - Creating file: /home/walber/Projetos/2025/MESTRADO-2025-2/cmmi-rdm-mestrado/diagramas/RDM-Overall.png
+(0.953 - 126 Mo) 88 Mo - Creating image 1067x3075
+(1.369 - 126 Mo) 33 Mo - Ok for com.sun.imageio.plugins.png.PNGMetadata
+(1.369 - 126 Mo) 33 Mo - Cannot create com.sun.imageio.plugins.png.PNGMetadata
+(1.571 - 126 Mo) 32 Mo - Number of image(s): 1

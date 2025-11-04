@@ -1,221 +1,149 @@
-@startuml RDM_Agil
+@startuml RDM-Overall
+title RDM CMMI 2.0 - Práticas Ágeis\nEstrutura por Papéis e Fases Iterativas
 
-title Diagrama de Atividades - RDM CMMI 2.0 (Adaptado para Metodologias Ágeis)\nÊnfase: Scrum, Iterações e Colaboração Contínua
+' === FASE 1: PRODUCT BACKLOG MANAGEMENT (Contínuo) ===
 
-|Product Owner|
-start
-:Identificar necessidades
-do cliente/usuário;
-
-|Product Owner|
-:**RDM 1.1 (Ágil)**
-Criar User Stories iniciais
-no Product Backlog;
-note right
-  Artefato: 
-  - Product Backlog Inicial
-  - User Stories (formato: 
-    "Como [usuário], quero [funcionalidade]
-    para [benefício]")
-end note
-
-:**RDM 2.1 (Ágil)**
-Planejar sessões de
-Discovery/Elicitação;
-
-|Time Ágil (Dev + PO + SM)|
-repeat
-  :Realizar Workshop de
-  Elicitação Colaborativa
-  (Brainstorming, Story Mapping);
-  
-  |Product Owner|
-  :Documentar necessidades
-  em User Stories;
-  :Identificar Critérios de
-  Aceitação (DoR);
+partition "FASE 1: Product Backlog Management (Contínuo)" {
+  start
+  :**RDM 1.1** - Criar User Stories iniciais no Product Backlog;
   note right
-    Artefatos Ágeis:
-    - User Stories detalhadas
-    - Critérios de Aceitação
-    - Definition of Ready (DoR)
-    - Protótipos/Wireframes
+    Artefato: Product Backlog
+    Formato: User Stories
   end note
-  
-repeat while (User Stories claras?) is (não)
-->sim;
 
-:**RDM 2.2 (Ágil)**
-Realizar sessão de
-Refinamento do Backlog
-(Backlog Grooming);
+  :**RDM 2.1** - Elicitar necessidades com stakeholders;
 
-|Time Ágil (Dev + PO)|
-:Decompor Épicos em
-User Stories menores;
-:Estimar User Stories
-(Planning Poker/Story Points);
-:Priorizar usando técnicas ágeis
-(MoSCoW, WSJF, Valor de Negócio);
-note right
-  Artefatos:
-  - Product Backlog Refinado
-  - User Stories priorizadas
-  - Estimativas (Story Points)
-  - Critérios de Priorização
-end note
+  :Fornecer feedback e necessidades de negócio;
+  :Participar de workshops de Discovery;
 
-:**RDM 2.3 (Ágil)**
-Realizar Sprint Planning
-ou sessão de Três Amigos
-(Dev, QA, PO);
+  :**RDM 2.2** - Realizar Backlog Refinement (toda a equipe);
 
-|Time de Desenvolvimento|
-:Revisar User Stories
-da Sprint;
-:Esclarecer dúvidas sobre
-requisitos e critérios;
-
-|Tester/QA|
-:Definir cenários de teste
-(BDD - Gherkin);
-
-|Time Ágil|
-repeat
-  :Alinhar entendimento comum
-  sobre a User Story;
-  :Atualizar Critérios de
-  Aceitação (DoD);
-  note right
-    Artefatos:
-    - Definition of Done (DoD)
-    - Cenários de Teste (BDD)
-    - Glossário Ubíquo (DDD)
-    - Sprint Backlog
-  end note
-repeat while (Consenso alcançado?) is (não)
-->sim;
-
-|Scrum Master|
-:**RDM 2.4 (Ágil)**
-Facilitar compromisso
-da equipe na Sprint Planning;
-
-|Time de Desenvolvimento|
-:Declarar capacidade da Sprint;
-:Comprometer-se com
-User Stories selecionadas;
-
-if (Time consegue entregar?) then (sim)
-  |Scrum Master|
-  :Formalizar Sprint Goal
-  e Sprint Backlog;
-  note right
-    Artefatos:
-    - Sprint Goal
-    - Sprint Backlog (comprometido)
-    - Burndown Chart (baseline)
-  end note
-  
-  |Tester/QA|
-  :**RDM 2.5 (Ágil)**
-  Criar rastreabilidade ágil;
-  :Vincular User Stories a:
-  - Tasks (Quadro Kanban)
-  - Testes Automatizados
-  - Código (Git commits)
-  - Build/Deploy (CI/CD);
-  note right
-    Artefatos de Rastreabilidade:
-    - Traceability Matrix Ágil
-    - Links no Jira/Azure DevOps
-    - Git commits referenciando US
-    - Testes BDD ↔ User Stories
-  end note
-  :Configurar integração contínua
-  para rastreamento automático;
-  
-  |Scrum Master + Product Owner|
-  :**RDM 2.6 (Ágil)**
-  Monitorar consistência durante
-  a Sprint (Daily Scrum);
-  
   repeat
-    :Realizar Daily Scrum;
-    :Verificar progresso das
-    User Stories;
-    
-    if (Mudança de requisito?) then (sim)
-      |Product Owner|
-      :Avaliar impacto da mudança;
-      
-      if (Mudança afeta Sprint atual?) then (sim)
-        :Negociar com Time:
-        - Refinar User Story
-        - Ou mover para próxima Sprint;
-        
-        |Time de Desenvolvimento|
-        :Atualizar Tasks e estimativas;
-        
-        |Tester/QA|
-        :Atualizar cenários de teste;
-        :Atualizar rastreabilidade;
-        note right
-          Artefatos:
-          - User Story atualizada
-          - Sprint Backlog revisado
-          - Registro de Mudanças
-        end note
-      else (não)
-        |Product Owner|
-        :Adicionar mudança ao
-        Product Backlog para
-        próximas Sprints;
-      endif
-      
-    else (não)
-      :Continuar execução da Sprint;
-    endif
-    
-  repeat while (Sprint em andamento?) is (sim)
-  ->não;
-  
-  |Time Ágil|
-  :Realizar Sprint Review;
-  :Demonstrar incremento
-  de software funcionando;
-  
-  |Product Owner|
-  :Validar User Stories
-  contra DoD e critérios
-  de aceitação;
-  
-  if (Incremento aceito?) then (sim)
-    :Atualizar Product Backlog;
-    
-    |Time Ágil|
-    :Realizar Sprint Retrospective;
-    :Identificar melhorias no
-    processo de requisitos;
+    :Refinar User Stories;
+    :Estimar (Planning Poker);
+    :Priorizar (MoSCoW, WSJF);
     note right
-      Melhoria Contínua:
-      - Ações de retrospectiva
-      - Lições aprendidas
-      - Ajustes no DoR/DoD
+      Colaboração cross-funcional:
+      - PO: prioriza valor
+      - Dev: estima esforço
+      - QA: identifica testabilidade
     end note
-    
+  repeat while (Backlog pronto\npara Planning?) is (não)
+
+}
+
+' === FASE 2: SPRINT PLANNING ===
+
+partition "FASE 2: Sprint Planning" {
+
+  :Facilitar Sprint Planning;
+
+  :**RDM 2.3** - Alinhar entendimento sobre User Stories da Sprint;
+
+  repeat
+    :Realizar "Três Amigos" (PO, Dev, QA);
+    :Definir Critérios de Aceitação;
+    :Criar cenários BDD;
+    note right
+      Técnicas:
+      - Example Mapping
+      - Acceptance Test-Driven Development
+      - Definition of Done (DoD)
+    end note
+  repeat while (Consenso\nalcançado?) is (não)
+
+  :**RDM 2.4** - Obter compromisso do Time;
+
+  :Declarar capacidade da Sprint;
+  :Comprometer-se com Sprint Goal e User Stories;
+
+  if (Time confiante\nna entrega?) then (sim)
+    note right
+      Artefatos:
+      - Sprint Backlog
+      - Sprint Goal
+      - Tasks decompostas
+    end note
   else (não)
-    :Mover User Stories não
-    aceitas de volta ao Backlog;
+    :Re-negociar escopo com Product Owner;
     detach
   endif
-  
-else (não)
-  |Scrum Master|
-  :Re-priorizar e ajustar
-  escopo da Sprint;
-  detach
-endif
+
+}
+
+' === FASE 3: SPRINT EXECUTION ===
+
+partition "FASE 3: Sprint Execution (2-4 semanas)" {
+
+  :**RDM 2.5** - Implementar User Stories com rastreabilidade;
+
+  :Vincular código a US (commits com #US-ID);
+  :Criar testes automatizados referenciando US;
+  :Atualizar CI/CD pipeline;
+  note right
+    Rastreabilidade Ágil:
+    - Git commits → User Story
+    - Testes BDD → Critérios de Aceitação
+    - Build → Sprint Backlog
+  end note
+
+  :**RDM 2.6** - Monitorar progresso diário;
+
+  repeat
+    :Daily Scrum (15 min);
+    :Verificar impedimentos;
+
+    if (Mudança de\nrequisito?) then (sim)
+  :Avaliar impacto;
+
+      if (Crítica para\nSprint atual?) then (sim)
+  :Ajustar Sprint Backlog;
+  :Atualizar rastreabilidade;
+        note right
+          Flexibilidade Ágil:
+          Mudanças aceitas, mas
+          negociadas com o Time
+        end note
+      else (não)
+  :Adicionar ao Product Backlog para próxima Sprint;
+      endif
+    else (não)
+    endif
+
+  repeat while (Sprint\nem andamento?) is (sim)
+
+}
+
+' === FASE 4: SPRINT REVIEW & RETROSPECTIVE ===
+
+partition "FASE 4: Sprint Review & Retrospective" {
+
+  :Sprint Review: Demonstrar incremento;
+
+  :**RDM 2.6 (continuação)** - Validar User Stories contra Definition of Done;
+
+  if (Incremento\naceito?) then (sim)
+    :Marcar User Stories como "Done";
+    :Atualizar Product Backlog;
+
+  :Sprint Retrospective: Inspecionar processo de requisitos;
+    :Identificar melhorias (ex: melhorar DoR, refinar técnicas de elicitação);
+    note right
+      Melhoria Contínua:
+      - O que funcionou bem?
+      - O que pode melhorar no RDM?
+      - Ações para próxima Sprint
+    end note
+
+    :Aplicar aprendizados na próxima iteração;
+
+  else (não)
+    :Mover User Stories não aceitas de volta ao Product Backlog;
+  endif
+
+}
+
+ :Preparar próximo ciclo (volta à Fase 1);
 
 stop
 
