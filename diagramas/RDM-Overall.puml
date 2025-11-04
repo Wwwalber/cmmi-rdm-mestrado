@@ -1,35 +1,222 @@
-@startuml RDM-Overall
-title Fluxo Geral RDM - CMMI 2.0 Nível 1 e 2
+@startuml RDM_Agil
 
-|Project Manager|
+title Diagrama de Atividades - RDM CMMI 2.0 (Adaptado para Metodologias Ágeis)\nÊnfase: Scrum, Iterações e Colaboração Contínua
+
+|Product Owner|
 start
-:Planejar RDM\n(escopo, responsabilidades, ferramentas);
-|Requirements Analyst|
-:Registrar requisitos inicial\n**(RDM 1.1)**;
-:Preparar elicitação;
-|Stakeholders|
-:Fornecer necessidades, restrições\ne interfaces **(RDM 2.1)**;
-|Requirements Analyst|
-:Transformar e priorizar em\nrequisitos do cliente **(RDM 2.2)**;
-|Provider (Dev/Arquitetura)|
-:Revisar e clarificar\nrequisitos **(RDM 2.3)**;
-|Project Manager|
-:Negociar viabilidade e obter\ncompromisso **(RDM 2.4)**;
-|Configuration Management|
-:Estabelecer e manter rastreabilidade\nbidirecional **(RDM 2.5)**;
-|Requirements Analyst|
-:Assegurar consistência entre\nplanos/atividades e requisitos **(RDM 2.6)**;
-if (Requisitos mudam?) then (sim)
-  :Executar impacto, atualizar\nrastreabilidade e planos;
-  :Re-obter comprometimento\nse necessário;
-  note right: Voltar para RDM 2.3
-else (não)
-endif
-stop
+:Identificar necessidades
+do cliente/usuário;
 
-legend right
-  |<back:lightblue>   </back>| Nível 1 |
-  |<back:lightgreen>   </back>| Nível 2 |
-endlegend
+|Product Owner|
+:**RDM 1.1 (Ágil)**
+Criar User Stories iniciais
+no Product Backlog;
+note right
+  Artefato: 
+  - Product Backlog Inicial
+  - User Stories (formato: 
+    "Como [usuário], quero [funcionalidade]
+    para [benefício]")
+end note
+
+:**RDM 2.1 (Ágil)**
+Planejar sessões de
+Discovery/Elicitação;
+
+|Time Ágil (Dev + PO + SM)|
+repeat
+  :Realizar Workshop de
+  Elicitação Colaborativa
+  (Brainstorming, Story Mapping);
+  
+  |Product Owner|
+  :Documentar necessidades
+  em User Stories;
+  :Identificar Critérios de
+  Aceitação (DoR);
+  note right
+    Artefatos Ágeis:
+    - User Stories detalhadas
+    - Critérios de Aceitação
+    - Definition of Ready (DoR)
+    - Protótipos/Wireframes
+  end note
+  
+repeat while (User Stories claras?) is (não)
+->sim;
+
+:**RDM 2.2 (Ágil)**
+Realizar sessão de
+Refinamento do Backlog
+(Backlog Grooming);
+
+|Time Ágil (Dev + PO)|
+:Decompor Épicos em
+User Stories menores;
+:Estimar User Stories
+(Planning Poker/Story Points);
+:Priorizar usando técnicas ágeis
+(MoSCoW, WSJF, Valor de Negócio);
+note right
+  Artefatos:
+  - Product Backlog Refinado
+  - User Stories priorizadas
+  - Estimativas (Story Points)
+  - Critérios de Priorização
+end note
+
+:**RDM 2.3 (Ágil)**
+Realizar Sprint Planning
+ou sessão de Três Amigos
+(Dev, QA, PO);
+
+|Time de Desenvolvimento|
+:Revisar User Stories
+da Sprint;
+:Esclarecer dúvidas sobre
+requisitos e critérios;
+
+|Tester/QA|
+:Definir cenários de teste
+(BDD - Gherkin);
+
+|Time Ágil|
+repeat
+  :Alinhar entendimento comum
+  sobre a User Story;
+  :Atualizar Critérios de
+  Aceitação (DoD);
+  note right
+    Artefatos:
+    - Definition of Done (DoD)
+    - Cenários de Teste (BDD)
+    - Glossário Ubíquo (DDD)
+    - Sprint Backlog
+  end note
+repeat while (Consenso alcançado?) is (não)
+->sim;
+
+|Scrum Master|
+:**RDM 2.4 (Ágil)**
+Facilitar compromisso
+da equipe na Sprint Planning;
+
+|Time de Desenvolvimento|
+:Declarar capacidade da Sprint;
+:Comprometer-se com
+User Stories selecionadas;
+
+if (Time consegue entregar?) then (sim)
+  |Scrum Master|
+  :Formalizar Sprint Goal
+  e Sprint Backlog;
+  note right
+    Artefatos:
+    - Sprint Goal
+    - Sprint Backlog (comprometido)
+    - Burndown Chart (baseline)
+  end note
+  
+  |Tester/QA|
+  :**RDM 2.5 (Ágil)**
+  Criar rastreabilidade ágil;
+  :Vincular User Stories a:
+  - Tasks (Quadro Kanban)
+  - Testes Automatizados
+  - Código (Git commits)
+  - Build/Deploy (CI/CD);
+  note right
+    Artefatos de Rastreabilidade:
+    - Traceability Matrix Ágil
+    - Links no Jira/Azure DevOps
+    - Git commits referenciando US
+    - Testes BDD ↔ User Stories
+  end note
+  :Configurar integração contínua
+  para rastreamento automático;
+  
+  |Scrum Master + Product Owner|
+  :**RDM 2.6 (Ágil)**
+  Monitorar consistência durante
+  a Sprint (Daily Scrum);
+  
+  repeat
+    :Realizar Daily Scrum;
+    :Verificar progresso das
+    User Stories;
+    
+    if (Mudança de requisito?) then (sim)
+      |Product Owner|
+      :Avaliar impacto da mudança;
+      
+      if (Mudança afeta Sprint atual?) then (sim)
+        :Negociar com Time:
+        - Refinar User Story
+        - Ou mover para próxima Sprint;
+        
+        |Time de Desenvolvimento|
+        :Atualizar Tasks e estimativas;
+        
+        |Tester/QA|
+        :Atualizar cenários de teste;
+        :Atualizar rastreabilidade;
+        note right
+          Artefatos:
+          - User Story atualizada
+          - Sprint Backlog revisado
+          - Registro de Mudanças
+        end note
+      else (não)
+        |Product Owner|
+        :Adicionar mudança ao
+        Product Backlog para
+        próximas Sprints;
+      endif
+      
+    else (não)
+      :Continuar execução da Sprint;
+    endif
+    
+  repeat while (Sprint em andamento?) is (sim)
+  ->não;
+  
+  |Time Ágil|
+  :Realizar Sprint Review;
+  :Demonstrar incremento
+  de software funcionando;
+  
+  |Product Owner|
+  :Validar User Stories
+  contra DoD e critérios
+  de aceitação;
+  
+  if (Incremento aceito?) then (sim)
+    :Atualizar Product Backlog;
+    
+    |Time Ágil|
+    :Realizar Sprint Retrospective;
+    :Identificar melhorias no
+    processo de requisitos;
+    note right
+      Melhoria Contínua:
+      - Ações de retrospectiva
+      - Lições aprendidas
+      - Ajustes no DoR/DoD
+    end note
+    
+  else (não)
+    :Mover User Stories não
+    aceitas de volta ao Backlog;
+    detach
+  endif
+  
+else (não)
+  |Scrum Master|
+  :Re-priorizar e ajustar
+  escopo da Sprint;
+  detach
+endif
+
+stop
 
 @enduml
