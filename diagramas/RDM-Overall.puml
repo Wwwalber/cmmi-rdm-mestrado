@@ -22,7 +22,7 @@ start
 if (Requisitos mudam?) then (sim)
   :Executar impacto, atualizar\nrastreabilidade e planos;
   :Re-obter comprometimento\nse necessário;
-  backward:Voltar para RDM 2.3;
+  note right: Voltar para RDM 2.3
 else (não)
 endif
 stop
