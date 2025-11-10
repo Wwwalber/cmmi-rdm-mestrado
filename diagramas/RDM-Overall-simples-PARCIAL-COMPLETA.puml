@@ -1,0 +1,135 @@
+@startuml RDM_Agil_Compacto_Parcial_Completa
+
+title RDM CMMI + Práticas ágeis (visão parcial detalhada até RDM 2.3)
+
+|Product Owner|
+start
+
+: **RDM 1.1**
+Registrar requisitos iniciais
+dos stakeholders;
+note right
+   **Artefatos possíveis**:
+   Visão do produto (essencial)
+   User story map (recomendado)
+  
+   Mais intenso no início do projeto
+end note
+
+: **RDM 2.1**
+Elicitar e estabelecer
+user stories;
+note right
+   **Artefatos possíveis**:
+   Product backlog (essencial)
+   User stories (essencial)
+   Feedback de incrementos (recomendado)
+  
+   Atividade contínua
+end note
+
+|Product owner + time|
+: **RDM 2.2**
+Refinamento do backlog 
+(priorização + estimativa)
+Decisão colaborativa;
+note right
+   **Artefatos possíveis**:
+   Product backlog priorizado (essencial)
+   Story points (recomendado)
+   Critérios de priorização
+  
+   PO prioriza, time estima
+end note
+
+|Time ágil|
+: **RDM 2.3**
+Analisar e validar
+requisitos (internamente);
+note right
+   **Artefatos possíveis**:
+   Critérios de aceitação (essencial)
+   Análise técnica detalhada (recomendado)
+   Identificação de riscos (recomendado)
+
+   Atividade interna do time
+end note
+
+note right
+  ════════════════════════════════════
+  **Práticas detalhadas acima ↑**
+  **Fluxo resumido abaixo ↓**
+  ════════════════════════════════════
+end note
+
+|Product owner + time|
+: **RDM 2.4**
+Sprint Planning
+(validação e compromisso);
+note right
+  Próxima etapa para discussão
+  com a equipe
+end note
+
+|Time ágil|
+repeat
+  : **RDM 2.5**
+  Desenvolvimento com
+  rastreabilidade;
+  note right
+    A definir
+  end note
+  
+  : **RDM 2.6**
+  Garantir consistência
+  com os requisitos
+  Daily Scrum;
+  note right
+    A definir
+  end note
+  
+  if (Mudança de requisito?) then (sim)
+    |Product Owner|
+    :Gestão de mudanças
+    (avaliar e decidir);
+    note right
+      A definir com a equipe:
+      • Critérios de priorização
+      • Fluxo de aprovação
+      • Comunicação de mudanças
+    end note
+    |Time ágil|
+  else (não)
+    :Continuar desenvolvimento;
+  endif
+  
+repeat while (Sprint ativa?) is (sim)
+->não;
+
+|Stakeholders|
+: Sprint Review
+(demonstração);
+note right
+  A definir
+end note
+
+|Time ágil|
+: Sprint retrospective
+(melhoria contínua);
+note right
+  A definir
+end note
+
+if (Mais sprints?) then (sim)
+  |Product owner|
+  :Preparar próxima sprint;
+  note right
+    Ciclo se repete
+  end note
+  detach
+else (não)
+  :Release final;
+  stop
+endif
+
+@enduml
