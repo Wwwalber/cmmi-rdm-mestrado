@@ -1,0 +1,92 @@
+@startuml RDM-1.1-Record-Requirements
+title RDM 1.1 - Record Requirements (Registrar Requisitos)
+skinparam activityFontSize 11
+skinparam activityDiamondFontSize 10
+
+|Stakeholders|
+start
+:Disparar requisito
+(reunião/feedback);
+note right
+  Entrada:
+  - Solicitação verbal/escrita
+  - Feedback de usuários
+  - Mudanças de escopo
+end note
+
+|Product Owner|
+:Receber informações
+de requisitos;
+note right
+  Artefato:
+  Notas/Atas de Reunião
+end note
+
+' === DECISÃO 1 ===
+if (Requisito completo e\ncompreensível?) then (não)
+  :Solicitar esclarecimento
+  ao stakeholder;
+  detach
+else (sim)
+  :Registrar User Story
+  no Product Backlog;
+  note right
+    Artefato: **User Story**
+    (essencial)
+  end note
+  
+  |Time de Desenvolvimento|
+  :Verificar clareza
+  do registro;
+  note right
+    Artefato:
+    Checklist de Validação
+    (recomendado)
+  end note
+  
+  ' === DECISÃO 2 ===
+  if (User Story com\npropósito e critérios\nmínimos?) then (não)
+    |Product Owner|
+    :Revisar e ajustar
+    a história;
+    detach
+  else (sim)
+    |Product Owner|
+    :Atualizar backlog
+    compartilhado;
+    note right
+      Artefato:
+      **Product Backlog Atualizado**
+      (essencial)
+    end note
+    
+    |Ferramenta (Jira/GitHub)|
+    :Confirmar armazenamento
+    e rastreabilidade;
+    note right
+      Artefato:
+      **Log de Rastreabilidade**
+      (essencial)
+    end note
+    
+    ' === DECISÃO 3 ===
+    if (Requisito salvo e\nrastreável?) then (não)
+      :Verificar configuração
+      da ferramenta;
+      detach
+    else (sim)
+      stop
+      note right
+        Saída:
+        - Product Backlog atualizado
+        - Requisitos rastreáveis
+        - Histórico documentado
+        
+        **Conecta à RDM 2.1**
+        (Elicitar User Stories)
+      end note
+    endif
+  endif
+endif
+
+@enduml
