@@ -49,31 +49,41 @@ if (Sessão bem planejada?\n(stakeholders certos,\ntécnica adequada)) then ([n�
 else ([sim])
   label PLAN
   
-  |Scrum Master|
-  :Facilitar workshop de elicitação
-  (Story Mapping, Brainstorming, Personas);
-  note right
-    **Ferramentas:**
-    - Miro/Mural
-    - Zoom/Teams
-  end note
-  
-  |Stakeholders|
-  :Participar do workshop
-  (fornecer necessidades);
+  ' Fork: Workshop paralelo com múltiplos participantes
+  split
+    |Scrum Master|
+    :Facilitar workshop de elicitação
+    (Story Mapping, Brainstorming, Personas);
+    note right
+      **Ferramentas:**
+      - Miro/Mural
+      - Zoom/Teams
+    end note
+  split again
+    |Stakeholders|
+    :Participar do workshop
+    (fornecer necessidades);
+  split again
+    |Product Owner|
+    :Conduzir workshop/entrevista
+    de elicitação;
+  split again
+    |Development Team|
+    :Apoiar workshop
+    (validar viabilidade técnica);
+  end split
   
   |Product Owner|
-  :Conduzir workshop/entrevista
-  de elicitação;
-  
-  |Development Team|
-  :Apoiar workshop
-  (validar viabilidade técnica);
-  
+  :Consolidar resultados
+  do workshop;
   note right
     **Artefato (Recomendado):**
     - Ata do Workshop
     - Notas e insights
+    
+    **Sincronização:** 
+    Barra de join após
+    atividades paralelas
   end note
   
   if (Necessidades claramente\ndocumentadas?) then ([não])
@@ -106,22 +116,33 @@ else ([sim])
       - Interfaces externas
     end note
     
-    |Product Owner|
-    :Converter necessidades em
-    User Stories (formato padrão);
-    note right
-      Formato:
-      "Como [papel],
-      quero [ação],
-      para [benefício]"
-    end note
+    ' Fork: Conversão paralela (PO escreve stories, Dev anota contexto técnico)
+    split
+      |Product Owner|
+      :Converter necessidades em
+      User Stories (formato padrão);
+      note right
+        Formato:
+        "Como [papel],
+        quero [ação],
+        para [benefício]"
+      end note
+    split again
+      |Development Team|
+      :Anotar contexto técnico inicial
+      (viabilidade, restrições);
+    end split
     
-    |Development Team|
-    :Apoiar conversão
-    (validar clareza técnica);
+    |Product Owner|
+    :Integrar anotações técnicas
+    às User Stories;
     note right
       **Artefato (Essencial):**
       - User Stories formatadas
+      com contexto técnico
+      
+      **Sincronização:**
+      Join após conversão paralela
     end note
     
     |Product Owner|
@@ -165,21 +186,33 @@ else ([sim])
           - Product Backlog Atualizado
         end note
         
+        ' Fork: Documentação paralela (múltiplos campos técnicos)
+        split
+          |Development Team|
+          :Documentar restrições
+          técnicas nas stories;
+        split again
+          |Development Team|
+          :Documentar dependências
+          identificadas;
+        split again
+          |Development Team|
+          :Anotar interfaces externas
+          nas stories relevantes;
+        end split
+        
         |Development Team|
-        :Documentar restrições
-        técnicas nas stories;
-        
-        :Documentar dependências
-        identificadas;
-        
-        :Anotar interfaces externas
-        nas stories relevantes;
+        :Consolidar documentação
+        de contexto;
         note right
           **Artefato (Essencial):**
           - Documentação de Contexto
           - Restrições técnicas
           - Dependências
           - Interfaces
+          
+          **Sincronização:**
+          Join após documentação paralela
         end note
         
         if (Todas restrições e\ndependências\ndocumentadas?) then ([não])
