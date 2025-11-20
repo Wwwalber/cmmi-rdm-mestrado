@@ -1,0 +1,312 @@
+        <mxfile host="app.diagrams.net">
+  <diagram id="diagram" name="RDM 2.1 - Elicitação">
+    <mxGraphModel dx="1400" dy="1400" grid="1" gridSize="10"
+      guides="1" tooltips="1" connect="1" arrows="1" fold="1"
+      page="1" pageScale="1" pageWidth="1400" pageHeight="1000"
+      math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1"/>
+
+        <!-- ============================= -->
+        <!-- SWIMLANES (ESTILO SEU DIAGRAMA) -->
+        <!-- ============================= -->
+
+        <mxCell id="lane_stakeholders" value="Stakeholders"
+          style="swimlane;horizontal=0;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="10" y="10" width="300" height="1200" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="lane_po" value="Product Owner"
+          style="swimlane;horizontal=0;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="310" y="10" width="300" height="1200" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="lane_time" value="Time de Desenvolvimento"
+          style="swimlane;horizontal=0;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="610" y="10" width="350" height="1200" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="lane_scrum" value="Scrum Master"
+          style="swimlane;horizontal=0;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="960" y="10" width="350" height="1200" as="geometry"/>
+        </mxCell>
+
+        <!-- ============================= -->
+        <!-- ENTRADA RDM 1.1              -->
+        <!-- ============================= -->
+
+        <mxCell id="entrada_rdm11" value="Entrada: Backlog inicial (RDM 1.1)"
+          style="rounded=1;fillColor=#cce5ff;strokeColor=#004085;fontSize=13"
+          vertex="1" parent="lane_po">
+          <mxGeometry x="30" y="40" width="240" height="55" as="geometry"/>
+        </mxCell>
+
+        <!-- ============================= -->
+        <!-- ATIVIDADE 1                   -->
+        <!-- ============================= -->
+
+        <mxCell id="atividade1" value="1. Planejar sessão de elicitação"
+          style="rounded=1;fillColor=#d4edda;strokeColor=#155724;fontSize=13"
+          vertex="1" parent="lane_po">
+          <mxGeometry x="30" y="140" width="260" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- DECISÃO 1 -->
+        <mxCell id="decisao1" value="Sessão bem planejada?"
+          style="rhombus;fillColor=#d4edda;strokeColor=#155724;fontSize=13"
+          vertex="1" parent="lane_po">
+          <mxGeometry x="70" y="240" width="180" height="100" as="geometry"/>
+        </mxCell>
+
+        <!-- LOOP PARA REPLANEJAR -->
+        <mxCell id="loop_replanejar" value="não"
+          edge="1" parent="lane_po" source="decisao1" target="atividade1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Fluxo normal da decisão -->
+        <mxCell id="edge_1_yes" value="sim"
+          edge="1" parent="lane_po" source="decisao1" target="atividade1" >
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- NOTA SOBRE A ATIVIDADE 1 -->
+        <mxCell id="nota1" value="Nota: definir técnica, participantes e agenda"
+          style="shape=note;whiteSpace=wrap;fillColor=#fff3cd;strokeColor=#856404;fontSize=12"
+          vertex="1" parent="lane_po">
+          <mxGeometry x="30" y="320" width="260" height="70" as="geometry"/>
+        </mxCell>
+
+        <!-- ============================= -->
+        <!-- ATIVIDADE 2 — Workshop        -->
+        <!-- ============================= -->
+
+        <mxCell id="atividade2" value="2. Conduzir workshop de elicitação"
+          style="rounded=1;fillColor=#d4edda;strokeColor=#155724;fontSize=13"
+          vertex="1" parent="lane_scrum">
+          <mxGeometry x="40" y="140" width="260" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- SETA DA ATIVIDADE 1 PARA ATIVIDADE 2 -->
+        <mxCell id="edge1_to_2" edge="1" parent="lane_scrum"
+          source="atividade1" target="atividade2">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- NOTA ATIVIDADE 2 -->
+        <mxCell id="nota2" value="Workshop pode usar: story mapping, brainstorming, entrevistas"
+          style="shape=note;whiteSpace=wrap;fillColor=#fff3cd;strokeColor=#856404;fontSize=12"
+          vertex="1" parent="lane_scrum">
+          <mxGeometry x="40" y="220" width="260" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- ============================= -->
+        <!-- ATIVIDADE 3 — Identificar necessidades -->
+        <!-- ============================= -->
+
+        <mxCell id="atividade3" value="3. Identificar e documentar necessidades/ restrições"
+          style="rounded=1;fillColor=#d4edda;strokeColor=#155724;fontSize=13"
+          vertex="1" parent="lane_time">
+          <mxGeometry x="40" y="350" width="260" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- SETA DO WORKSHOP PARA ATIVIDADE 3 -->
+        <mxCell id="edge_2_to_3" edge="1" parent="lane_time"
+          source="atividade2" target="atividade3">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- DECISÃO 2 — Necessidades documentadas? -->
+        <mxCell id="decisao2" value="Necessidades documentadas claramente?"
+          style="rhombus;fillColor=#d4edda;strokeColor=#155724;fontSize=13"
+          vertex="1" parent="lane_time">
+          <mxGeometry x="70" y="450" width="200" height="110" as="geometry"/>
+        </mxCell>
+
+        <!-- CONEXÃO 3→DECISÃO 2 -->
+        <mxCell id="edge_3_to_dec2" edge="1" parent="lane_time"
+          source="atividade3" target="decisao2">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- LOOP SE NÃO DOCUMENTADO -->
+        <mxCell id="loop_dec2_no" value="não"
+          edge="1" parent="lane_time" source="decisao2" target="atividade2">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- NOTA DA DECISÃO 2 -->
+        <mxCell id="nota3" value="Se faltou informação, fazer rodada adicional de perguntas"
+          style="shape=note;whiteSpace=wrap;fillColor=#fff3cd;strokeColor=#856404;fontSize=12"
+          vertex="1" parent="lane_time">
+          <mxGeometry x="40" y="580" width="260" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- ============================= -->
+        <!-- ATIVIDADE 4 – Converter em User Stories -->
+        <!-- ============================= -->
+
+        <mxCell id="atividade4" value="4. Converter necessidades em User Stories"
+          style="rounded=1;fillColor=#d4edda;strokeColor=#155724;fontSize=13"
+          vertex="1" parent="lane_po">
+          <mxGeometry x="40" y="450" width="260" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- DECISÃO 3 – Stories compreensíveis? -->
+        <mxCell id="decisao3" value="Stories compreensíveis?"
+          style="rhombus;fillColor=#d4edda;strokeColor=#155724;fontSize=13"
+          vertex="1" parent="lane_po">
+          <mxGeometry x="70" y="540" width="200" height="110" as="geometry"/>
+        </mxCell>
+
+        <!-- CONEXÃO DEC2→ATV4 (SIM) -->
+        <mxCell id="edge_dec2_yes" value="sim" edge="1" parent="lane_po"
+          source="decisao2" target="atividade4">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- LOOP STORIES NÃO COMPREENSÍVEIS -->
+        <mxCell id="loop_dec3_no" value="não"
+          edge="1" parent="lane_po" source="decisao3" target="atividade4">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- NOTA DA ATIVIDADE 4 -->
+        <mxCell id="nota4" value="Formato padrão: 'Como [papel], quero [ação], para [benefício]'"
+          style="shape=note;whiteSpace=wrap;fillColor=#fff3cd;strokeColor=#856404;fontSize=12"
+          vertex="1" parent="lane_po">
+          <mxGeometry x="40" y="670" width="260" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- ============================= -->
+        <!-- ATIVIDADE 5 – Validar com stakeholders -->
+        <!-- ============================= -->
+
+        <mxCell id="atividade5" value="5. Revisar User Stories com Stakeholders"
+          style="rounded=1;fillColor=#d4edda;strokeColor=#155724;fontSize=13"
+          vertex="1" parent="lane_stakeholders">
+          <mxGeometry x="30" y="450" width="260" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- Conexão da atividade 4 para 5 -->
+        <mxCell id="edge_4_to_5" edge="1" parent="lane_stakeholders"
+          source="atividade4" target="atividade5">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- DECISÃO 4 – Stakeholders validaram? -->
+        <mxCell id="decisao4" value="Stakeholders validaram?"
+          style="rhombus;fillColor=#d4edda;strokeColor=#155724;fontSize=13"
+          vertex="1" parent="lane_stakeholders">
+          <mxGeometry x="60" y="540" width="200" height="110" as="geometry"/>
+        </mxCell>
+
+        <!-- SETA 5 → DECISÃO 4 -->
+        <mxCell id="edge_5_to_dec4" edge="1" parent="lane_stakeholders"
+          source="atividade5" target="decisao4">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- LOOP: NÃO VALIDARAM -->
+        <mxCell id="loop_dec4_no" value="não"
+          edge="1" parent="lane_stakeholders"
+          source="decisao4" target="atividade4">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- NOTA DECISÃO 4 -->
+        <mxCell id="nota5" value="Sessão de validação garante entendimento correto"
+          style="shape=note;whiteSpace=wrap;fillColor=#fff3cd;strokeColor=#856404;fontSize=12"
+          vertex="1" parent="lane_stakeholders">
+          <mxGeometry x="30" y="670" width="260" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- ============================= -->
+        <!-- ATIVIDADE 6 – Incorporar ao Backlog -->
+        <!-- ============================= -->
+
+        <mxCell id="atividade6" value="6. Incorporar User Stories validadas ao Product Backlog"
+          style="rounded=1;fillColor=#d4edda;strokeColor=#155724;fontSize=13"
+          vertex="1" parent="lane_po">
+          <mxGeometry x="40" y="780" width="260" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- SETA DECISÃO 4 (SIM) → ATIVIDADE 6 -->
+        <mxCell id="edge_dec4_yes" value="sim" edge="1"
+          parent="lane_po" source="decisao4" target="atividade6">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- NOTA ATIVIDADE 6 -->
+        <mxCell id="nota6" value="Registrar no Jira/GitHub: descrição, critérios e status inicial"
+          style="shape=note;whiteSpace=wrap;fillColor=#fff3cd;strokeColor=#856404;fontSize=12"
+          vertex="1" parent="lane_po">
+          <mxGeometry x="40" y="860" width="260" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- ============================= -->
+        <!-- ATIVIDADE 7 – Documentar contexto -->
+        <!-- ============================= -->
+
+        <mxCell id="atividade7" value="7. Documentar contexto (restrições, dependências, interfaces)"
+          style="rounded=1;fillColor=#d4edda;strokeColor=#155724;fontSize=13"
+          vertex="1" parent="lane_time">
+          <mxGeometry x="40" y="780" width="260" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- SETA ATIVIDADE 6 → ATIVIDADE 7 -->
+        <mxCell id="edge_6_to_7" edge="1" parent="lane_time"
+          source="atividade6" target="atividade7">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- DECISÃO FINAL – Restrições documentadas? -->
+        <mxCell id="decisao_final" value="Todas as restrições/documentações completas?"
+          style="rhombus;fillColor=#d4edda;strokeColor=#155724;fontSize=13"
+          vertex="1" parent="lane_time">
+          <mxGeometry x="70" y="880" width="220" height="110" as="geometry"/>
+        </mxCell>
+
+        <!-- SETA 7 → DECISÃO FINAL -->
+        <mxCell id="edge_7_to_final" edge="1" parent="lane_time"
+          source="atividade7" target="decisao_final">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- LOOP FINAL: NÃO DOCUMENTADO -->
+        <mxCell id="loop_final_no" value="não" edge="1" parent="lane_time"
+          source="decisao_final" target="atividade7">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- ============================= -->
+        <!-- SAÍDA FINAL – Conectar RDM 2.2 -->
+        <!-- ============================= -->
+
+        <mxCell id="saida_final" value="Saída: Backlog enriquecido (entrará no RDM 2.2)"
+          style="rounded=1;fillColor=#cce5ff;strokeColor=#004085;fontSize=13"
+          vertex="1" parent="lane_po">
+          <mxGeometry x="40" y="1000" width="300" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- SETA DECISÃO FINAL (SIM) → SAÍDA -->
+        <mxCell id="edge_final_yes" value="sim" edge="1" parent="lane_po"
+          source="decisao_final" target="saida_final">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- ============================= -->
+        <!-- NOTA DE ENCERRAMENTO          -->
+        <!-- ============================= -->
+
+        <mxCell id="nota_final" value="Fim da prática RDM 2.1 — próxima: RDM 2.2 (Priorizar e Refinar)"
+          style="shape=note;whiteSpace=wrap;fillColor=#fff3cd;strokeColor=#856404;fontSize=12"
+          vertex="1" parent="1">
+          <mxGeometry x="1020" y="1080" width="260" height="80" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -4,138 +4,115 @@ Este template deve ser preenchido de forma colaborativa pela equipe antes da dia
 
 ---
 
-### **🧱 1. Identificação da Prática**
+### **🧱 1\. Identificação da Prática**
 
-* **Código:** RDM 1.1
+* **Código:** RDM 1.1 \- Record requirements.
 
-* **Nível:**   ✅ 1   ☐ 2 
+* **Nível:**   ✅ 1   
 
-* **Responsável:** (Exemplo - substituir pelo nome real)
-
----
-
-### **🎯 2. Objetivo da Prática**
-
-Capturar e registrar os requisitos iniciais dos stakeholders, estabelecendo uma visão compartilhada do produto e garantindo que as necessidades de negócio sejam compreendidas antes da decomposição em histórias de usuário.
+* **Responsável:** Time
 
 ---
 
-### **⚙️ 3. Atividades (sequência lógica para o diagrama)**
+### **🎯 2\. Objetivo da Prática**
 
-Liste **as ações principais** em sequência (como uma receita de bolo). Cada item será representado como uma **atividade (elipse)** no diagrama.
-
-1. Realizar workshop de descoberta com stakeholders e usuários finais.
-2. Identificar e documentar épicos de alto nível.
-3. Criar/atualizar a Visão do Produto (Product Vision).
-4. Mapear personas (se aplicável ao projeto).
-5. Criar User Story Map (se aplicável).
-6. Registrar requisitos não-funcionais e restrições.
-7. Validar entendimento com stakeholders-chave.
-8. Arquivar documentação e registros no repositório.
+Registrar de forma organizada e acessível os requisitos recebidos de fontes internas ou externas, garantindo que todas as informações relevantes sejam devidamente documentadas. Essa prática assegura que o projeto mantenha uma base confiável de requisitos formalizados, servindo como ponto de referência para o planejamento e desenvolvimento das atividades posteriores.
 
 ---
 
-### **🔁 4. Procedimentos e Decisões (condicionais do fluxo)**
+### **⚙️ 3\. Atividades (sequência lógica para o diagrama)**
 
-Descreva **decisões ou ramificações** que possam ocorrer durante as atividades (serão representadas como **losangos**).
+1. Receber informações de requisitos vindas de stakeholders via reuniões, revisões ou feedbacks. \[Product Owner — disparado por Stakeholders / Facilitado pelo Scrum Master\]
 
-- **(na atividade 3)** A visão do produto está clara para todos? (Sim → prosseguir / Não → refinar com stakeholders)
-- **(na atividade 7)** Stakeholders validaram os requisitos? (Sim → arquivar / Não → retornar à atividade 1)
-- **(após atividade 8)** É necessário criar personas e story map? (Sim → executar atividades 4 e 5 / Não → pular para atividade 6)
+2. Registrar o requisito no Product Backlog, usando *User Stories* com critérios básicos de aceitação. \[Product Owner — apoio do Time de Desenvolvimento / uso da Ferramenta de Gestão (Jira ou GitHub)\]
+
+3. Verificar a clareza do registro (história bem escrita, com propósito e critério de aceitação mínimo). \[Time de Desenvolvimento — em conjunto com Product Owner\]
+
+4. Atualizar o backlog compartilhado, garantindo que o registro fique visível para toda a equipe no sistema de gestão. \[Product Owner — executado na Ferramenta de Gestão (Jira ou GitHub)\]
+
+5. Confirmar o armazenamento e rastreabilidade na ferramenta (Jira ou GitHub) para manter histórico de alterações. \[Ferramenta de Gestão — verificado pelo Product Owner\]  
+     
+   
+
+### **🔁 4\. Procedimentos e Decisões (condicionais do fluxo)**
+
+1. **O requisito está completo e compreensível?**  
+        Sim: prosseguir para o registro no backlog.  
+        Não: solicitar esclarecimento ao stakeholder e retornar à atividade “Receber informações de requisitos”.  
+    \[Verificação feita pelo Product Owner, com apoio do Time de Desenvolvimento\]
+
+2. **A User Story registrada possui propósito e critérios de aceitação mínimos?**  
+        Sim: avançar para atualização do backlog compartilhado.  
+        Não: revisar e ajustar a história antes de publicá-la.
+
+ \[Decisão conduzida pelo Product Owner e validada pelo Time de Desenvolvimento\]
+
+3. **O requisito foi salvo e está rastreável na ferramenta (Jira / GitHub)?**  
+        Sim: encerrar o processo de registro.  
+        Não: repetir a etapa de armazenamento e verificar novamente a configuração da ferramenta.  
+    \[Decisão automática na Ferramenta de Gestão, supervisionada pelo Product Owner\]
 
 ---
 
-### **📦 5. Artefatos / Produtos de Trabalho**
+### **📦 5\. Artefatos / Produtos de Trabalho**
 
 Liste **documentos, registros ou entregas** criados nessa prática (entradas e saídas no diagrama).
 
-- **Atividade 1** - Saída: Ata de workshop com requisitos coletados
-- **Atividade 2** - Saída: Lista de épicos de alto nível
-- **Atividade 3** - Saída: Documento de Visão do Produto (essencial)
-- **Atividade 4** - Saída: Personas documentadas (opcional)
-- **Atividade 5** - Saída: User Story Map visual (recomendado)
-- **Atividade 6** - Saída: Documento de requisitos não-funcionais e restrições
-- **Atividade 7** - Saída: Ata de validação com stakeholders
-- **Atividade 8** - Saída: Épicos registrados no GitHub, documentação versionada
+Exemplo: Product Backlog, Ata de Reunião, Histórias de Usuário, Planilha de Rastreabilidade.
 
 ---
 
-### **👥 6. Papéis Envolvidos (Raias / Swimlanes)**
-
-Marque os **papéis** que participam das atividades. Essas informações determinarão as **swimlanes** do diagrama.
+### **👥 6\. Papéis Envolvidos (Raias / Swimlanes)**
 
 | Papel | Participa? | Ação (executa / valida / apoia) |
 | ----- | :---: | ----- |
-| 🧑‍💼 Product Owner | ✅ | Executa: conduz workshops, documenta visão, valida com stakeholders |
-| 👥 Time de Desenvolvimento | ☐ | Apoia: participa de workshops (opcional) |
-| 🧑‍🔧 Scrum Master / Facilitador | ✅ | Apoia: facilita dinâmicas, remove impedimentos |
-| 💬 Stakeholders / Usuários | ✅ | Valida: fornece requisitos, valida entendimento |
-| 🗂️ Ferramenta de Gestão (GitHub) | ✅ | Armazena: registra épicos, issues, documentação |
+| 🧑‍💼 Product Owner | ✅ | Executa e valida |
+| 👥 Time de Desenvolvimento | ✅ | Valida / apoia |
+| 🧑‍🔧 Scrum Master / Facilitador | ☐ |  |
+| 💬 Stakeholders / Usuários | ✅ | Disparam / fornecem informações |
+| 🗂️ Ferramenta de Gestão (Jira, GitHub) | ✅ | Executa / registra / mantém rastreabilidade |
 
 ---
 
-### **🧰 7. Recursos Utilizados (Humanos e Não Humanos)**
+### **🧰 7\. Recursos Utilizados (Humanos e Não Humanos)**
 
 Liste **pessoas, ferramentas, softwares ou documentos** usados nas atividades.
 
-- **Humanos:** Stakeholders, Product Owner, Scrum Master, usuários finais
-- **Ferramentas:** GitHub (issues/épicos), Miro/Mural (story map), Google Docs/Confluence (documentação)
-- **Documentos:** Template de visão de produto, formulários de coleta, pesquisas de mercado
-- **Outros:** Quadro físico/digital para workshops, ferramentas de videoconferência
+Exemplo: Stakeholders, Jira, planilhas, formulários online, quadro Miro.
 
 ---
 
-### **🔗 8. Entradas (início do fluxo)**
+### **🔗 8\. Entradas (início do fluxo)**
 
 Defina **o que dá início** ao conjunto de atividades.
 
-- Objetivos estratégicos do negócio
-- Mapa de stakeholders
-- Pesquisas de mercado / feedback de usuários existentes
-- Requisitos regulatórios ou de compliance (se aplicável)
-- Backlog de produtos anteriores (se existir)
-- Solicitação formal de novo produto/feature
+Exemplo: Solicitação de mudança, backlog anterior, plano da sprint.
 
 ---
 
-### **📤 9. Saídas (final do fluxo)**
+### **📤 9\. Saídas (final do fluxo)**
 
 Defina **o que encerra** o conjunto de atividades.
 
-- **Visão do Produto** aprovada e documentada (essencial)
-- **Épicos de alto nível** registrados no GitHub (essencial)
-- **User Story Map** criado e compartilhado (recomendado)
-- **Personas** documentadas (opcional)
-- **Requisitos não-funcionais** registrados
-- **Atas de workshops** arquivadas
-- **Validação formal** dos stakeholders
+Exemplo: Backlog priorizado, requisitos aprovados, incrementos validados.
 
 ---
 
-### **🧩 10. Relação com Outras Práticas RDM**
+### **🧩 10\. Relação com Outras Práticas RDM**
 
 Indique **práticas anteriores e posteriores** para orientar a ligação entre atividades e subprocessos.
 
-- **Entrada de:** Processo de planejamento estratégico (não RDM)
-- **Fornece saída para:** RDM 2.1 (Elicitar e Estabelecer User Stories)
-- **Pode ser revisitada por:** Mudanças estratégicas, pivôs de produto, expansões de escopo
+Exemplo: Recebe entrada de RDM 1.1 e fornece saída para RDM 2.2.
 
 ---
 
-### **🧭 11. Notas e Observações para o Modelador Visual**
+### **🧭 11\. Notas e Observações para o Modelador Visual**
 
 Inclua **dicas visuais** para o diagrama: fluxos alternativos, sincronizações ou loops.
 
-- **Frequência:** Mais intenso no **início do projeto** (Sprint 0), mas pode ser revisitado
-- **Fluxo alternativo:** Se projeto já tem visão documentada, pular atividade 3 e ir direto para validação
-- **Loop de validação:** Da atividade 7, se não validado, retornar à atividade 1
-- **Decisão condicional:** Após atividade 3, verificar se personas/story map são necessários
-- **Swimlanes principais:** Product Owner (coordena), Stakeholders (fornecem input), Ferramentas (armazenam)
-- **Sincronização:** Barra de sincronização após atividade 7 (validação) antes de arquivar
+Exemplo: Incluir barra de sincronização após coleta e validação; representar revisão como fluxo de retorno.
 
 ---
 
-## **✅** O documento consolidado servirá de **roteiro textual para a diagramação** do processo RDM.
+## **✅** O documento consolidado servirá de **roteiro textual para a diagramação** do processo RDM. 
 
-**Última atualização**: 12/Nov/2025  
-**Revisado por**: [A definir pela equipe]
