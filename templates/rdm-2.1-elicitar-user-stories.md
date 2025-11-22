@@ -40,10 +40,6 @@ Elicitar de forma colaborativa as necessidades, expectativas e restrições dos 
 
 ### **🔁 4. Procedimentos e Decisões (condicionais do fluxo)**
 
-1. **A sessão de elicitação foi bem planejada (stakeholders certos, técnica adequada)?**  
-   Sim: prosseguir para condução do workshop.  
-   Não: replanejar sessão ajustando participantes ou técnicas.  
-   [Verificação feita pelo Product Owner + Scrum Master]
 
 2. **As necessidades foram claramente documentadas durante a sessão?**  
    Sim: avançar para conversão em User Stories.  
@@ -127,7 +123,6 @@ Elicitar de forma colaborativa as necessidades, expectativas e restrições dos 
 - Visão do produto
 - Objetivos de negócio
 - Feedback de sprints anteriores (se aplicável)
-- Mudanças no mercado ou regulamentações
 
 ---
 
