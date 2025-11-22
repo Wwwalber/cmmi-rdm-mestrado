@@ -1,0 +1,55 @@
+@startuml RDM_1_1_Iterativo
+
+title RDM 1.1 - Registrar Requisitos Iniciais dos Stakeholders
+caption Baseado no template "documentacao-rdms-1.1-2.1.md" (versão 1.1)
+
+|Product Owner|
+start
+
+:Reunir para levantar requisitos iniciais;
+note right
+**Objetivo:** registrar necessidades e expectativas iniciais.  
+**Entradas:** solicitações, backlog anterior, entrevistas.  
+**Saídas:** rascunho de requisitos, anotações de reuniões.  
+**Recursos:** planilhas, formulários, quadro Miro.
+end note
+
+:Registrar as necessidades no backlog;
+note right
+**Artefatos:** Product Backlog inicial, user stories de alto nível,  
+mapa de stakeholders, ata de reunião.
+end note
+
+|Time de Desenvolvimento|
+:Validar entendimento coletivo;
+note right
+**Decisão:** O requisito foi compreendido?  
+→ Sim: armazenar registro final.  
+→ Não: retornar para esclarecimento.  
+**Papéis:** Product Owner, Time, Stakeholders.
+end note
+
+if ("Requisito compreendido?") then ([Sim])
+  :Armazenar o registro final de requisitos;
+  note right
+  **Saída:** backlog atualizado e validado.  
+  **Relacionamento:** fornece entrada para RDM 2.1.
+  end note
+else ([Não])
+  :Revisar entendimento e ajustar registro;
+  note right
+  **Fluxo de retorno:** reunião de esclarecimento.  
+  **Apoio:** Scrum Master facilita discussão.
+  end note
+  --> :Reunir para levantar requisitos iniciais;
+endif
+
+stop
+
+legend bottom
+🔹 RDM 1.1 — Representa o registro inicial dos requisitos dos stakeholders.  
+🔹 Esta versão serve como base iterativa para expansão futura até RDM 2.1.  
+🔹 Cada "note" corresponde a seções do template (objetivo, artefatos, entradas/saídas).
+endlegend
+
+@enduml

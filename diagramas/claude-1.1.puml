@@ -1,0 +1,107 @@
+@startuml RDM_1.1_Activity_Diagram_Vertical
+!define SWIMLANE_WIDTH 250
+skinparam backgroundColor #FEFEFE
+skinparam ActivityBackgroundColor #E1F5FF
+skinparam ActivityBorderColor #01579B
+skinparam ActivityFontColor #000000
+skinparam DecisionBackgroundColor #FFF9C4
+skinparam DecisionBorderColor #F57F17
+skinparam NoteBackgroundColor #FFFFCC
+skinparam NoteBorderColor #CCCC00
+skinparam ArrowColor #333333
+skinparam Padding 10
+
+title RDM 1.1 - Record Requirements (Maturity Level 1)\nUML Activity Diagram - Vertical Flow
+
+|Stakeholders|
+start
+:Disparar requisito
+(reunião/feedback);
+note right
+  **Entrada:**
+  - Solicitação verbal/escrita
+  - Feedback de usuários
+  - Mudanças de escopo
+end note
+
+|Development Team|
+:Receber informações
+de requisito;
+
+:Verificar clareza
+do registro;
+note right
+  Checklist de validação
+end note
+
+if (Requisito
+completo é
+compreensível?) then ([não])
+  |Stakeholders|
+  :Solicitar esclarecimento
+  ao stakeholder;
+  
+  |Stakeholders|
+  :Fornecer informação
+  adicional;
+  
+  |Development Team|
+  :Integrar nova
+  informação;
+  note right
+    Atualizar requisito
+    com novos detalhes
+  end note
+  
+  goto CHECK
+else ([sim])
+  label CHECK
+  :Revisar e ajustar
+  a história;
+  
+  :Registrar User Story
+  no Product Backlog;
+  note right
+    **Artefato:**
+    - User story
+    - Product Backlog
+  end note
+  
+  :Verificar configuração
+  da ferramenta;
+  note right
+    Jira/GitHub/Confluence
+  end note
+  
+  if (Requisito salvo e
+  rastreável?) then ([não])
+    :Corrigir configuração;
+    goto CHECK
+  else ([sim])
+    :Confirmar armazenamento
+    e rastreabilidade;
+    
+    :Atualizar backlog
+    compartilhado;
+    note right
+      Log de rastreabilidade
+    end note
+    
+    |Product Owner|
+    :Validar requisito
+    registrado;
+    
+    stop
+    note right
+      **Saída:**
+      - Product Backlog atualizado
+      - Requisitos rastreáveis
+      - Histórico documentado
+      
+      Conecta à RDM 2.1
+      (Elicitar User Stories)
+    end note
+  endif
+endif
+
+@enduml

@@ -1,0 +1,250 @@
+@startuml RDM_2.1_Activity_Diagram_Vertical
+!define SWIMLANE_WIDTH 250
+skinparam backgroundColor #FEFEFE
+skinparam ActivityBackgroundColor #E1F5FF
+skinparam ActivityBorderColor #01579B
+skinparam ActivityFontColor #000000
+skinparam DecisionBackgroundColor #FFF9C4
+skinparam DecisionBorderColor #F57F17
+skinparam NoteBackgroundColor #FFFFCC
+skinparam NoteBorderColor #CCCC00
+skinparam ArrowColor #333333
+skinparam Padding 10
+
+title RDM 2.1 - Elicit Stakeholder Needs (Maturity Level 2)\nUML Activity Diagram - Vertical Flow
+
+|Product Owner|
+start
+note right
+  **Entrada:**
+  - Product Backlog (RDM 1.1)
+  - Visão do produto
+  - Objetivos de negócio
+end note
+
+:Planejar sessão de elicitação
+(stakeholders, objetivos, técnicas);
+note right
+  **Artefato (Recomendado):**
+  - Plano de Sessão
+  - Agenda
+  - Técnicas definidas
+end note
+
+|Scrum Master|
+:Apoiar planejamento
+da sessão;
+
+|Product Owner|
+if (Sessão bem planejada?\n(stakeholders certos,\ntécnica adequada)) then ([não])
+  :Replanejar sessão
+  (ajustar participantes/técnicas);
+  note right
+    Revisar:
+    - Participantes
+    - Técnicas
+    - Timing
+  end note
+  goto PLAN
+else ([sim])
+  label PLAN
+  
+  ' Fork: Workshop paralelo com múltiplos participantes
+  split
+    |Scrum Master|
+    :Facilitar workshop de elicitação
+    (Story Mapping, Brainstorming, Personas);
+    note right
+      **Ferramentas:**
+      - Miro/Mural
+      - Zoom/Teams
+    end note
+  split again
+    |Stakeholders|
+    :Participar do workshop
+    (fornecer necessidades);
+  split again
+    |Product Owner|
+    :Conduzir workshop/entrevista
+    de elicitação;
+  split again
+    |Development Team|
+    :Apoiar workshop
+    (validar viabilidade técnica);
+  end split
+  
+  |Product Owner|
+  :Consolidar resultados
+  do workshop;
+  note right
+    **Artefato (Recomendado):**
+    - Ata do Workshop
+    - Notas e insights
+    
+    **Sincronização:** 
+    Barra de join após
+    atividades paralelas
+  end note
+  
+  if (Necessidades claramente\ndocumentadas?) then ([não])
+    |Stakeholders|
+    :Conduzir rodada adicional
+    de perguntas;
+    note right
+      Esclarecer:
+      - Necessidades
+      - Expectativas
+      - Restrições
+    end note
+    goto WORKSHOP
+  else ([sim])
+    label WORKSHOP
+    
+    |Development Team|
+    :Identificar necessidades
+    e expectativas;
+    
+    :Documentar restrições
+    identificadas;
+    
+    :Listar interfaces
+    externas mencionadas;
+    note right
+      **Artefato (Essencial):**
+      - Lista de Necessidades
+      - Restrições
+      - Interfaces externas
+    end note
+    
+    ' Fork: Conversão paralela (PO escreve stories, Dev anota contexto técnico)
+    split
+      |Product Owner|
+      :Converter necessidades em
+      User Stories (formato padrão);
+      note right
+        Formato:
+        "Como [papel],
+        quero [ação],
+        para [benefício]"
+      end note
+    split again
+      |Development Team|
+      :Anotar contexto técnico inicial
+      (viabilidade, restrições);
+    end split
+    
+    |Product Owner|
+    :Integrar anotações técnicas
+    às User Stories;
+    note right
+      **Artefato (Essencial):**
+      - User Stories formatadas
+      com contexto técnico
+      
+      **Sincronização:**
+      Join após conversão paralela
+    end note
+    
+    |Product Owner|
+    if (Stories seguem formato\npadrão e são\ncompreensíveis?) then ([não])
+      :Refinar User Stories
+      (ajustar formato e clareza);
+      note right
+        Revisar:
+        - Formato
+        - Clareza
+        - Completude
+      end note
+      goto CONVERT
+    else ([sim])
+      label CONVERT
+      
+      |Stakeholders|
+      :Revisar User Stories
+      criadas;
+      
+      |Product Owner|
+      :Apresentar User Stories
+      para validação;
+      
+      if (Stakeholders validaram\nque stories refletem\nnecessidades?) then ([não])
+        :Ajustar User Stories
+        conforme feedback;
+        note right
+          Incorporar feedback
+          dos stakeholders
+        end note
+        goto CONVERT
+      else ([sim])
+        
+        |Management Tool|
+        :Incorporar User Stories
+        ao Product Backlog
+        (Jira/GitHub);
+        note right
+          **Artefato (Essencial):**
+          - Product Backlog Atualizado
+        end note
+        
+        ' Fork: Documentação paralela (múltiplos campos técnicos)
+        split
+          |Development Team|
+          :Documentar restrições
+          técnicas nas stories;
+        split again
+          |Development Team|
+          :Documentar dependências
+          identificadas;
+        split again
+          |Development Team|
+          :Anotar interfaces externas
+          nas stories relevantes;
+        end split
+        
+        |Development Team|
+        :Consolidar documentação
+        de contexto;
+        note right
+          **Artefato (Essencial):**
+          - Documentação de Contexto
+          - Restrições técnicas
+          - Dependências
+          - Interfaces
+          
+          **Sincronização:**
+          Join após documentação paralela
+        end note
+        
+        if (Todas restrições e\ndependências\ndocumentadas?) then ([não])
+          :Complementar documentação
+          na ferramenta;
+          note right
+            Verificar completude
+            da documentação
+          end note
+          goto DOCUMENT
+        else ([sim])
+          label DOCUMENT
+          
+          |Product Owner|
+          :Backlog enriquecido
+          com User Stories validadas;
+          
+          stop
+          note right
+            **Saídas:**
+            - User Stories formatadas
+            - Restrições documentadas
+            - Interfaces mapeadas
+            - Backlog enriquecido
+            
+            **Próximo passo:**
+            → RDM 2.2 (Backlog Refinement)
+          end note
+        endif
+      endif
+    endif
+  endif
+endif
+
+@enduml

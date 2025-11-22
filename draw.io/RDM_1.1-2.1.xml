@@ -1,0 +1,130 @@
+<mxfile host="app.diagrams.net">
+  <diagram id="diagram" name="RDM N1 + N2.1 - Swimlanes">
+    <mxGraphModel dx="1000" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1"/>
+
+        <!-- ========================== -->
+        <!--         SWIMLANES          -->
+        <!-- ========================== -->
+
+        <mxCell id="lane_stake" value="Stakeholder" style="swimlane;horizontal=0;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="10" y="10" width="300" height="850" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="lane_po" value="Product Owner" style="swimlane;horizontal=0;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="310" y="10" width="300" height="850" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="lane_dev" value="Time de Desenvolvimento" style="swimlane;horizontal=0;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="610" y="10" width="480" height="850" as="geometry"/>
+        </mxCell>
+
+        <!-- ========================== -->
+        <!--      CAMADA N1 (AZUL)      -->
+        <!-- ========================== -->
+
+        <mxCell id="n1_receive" value="N1: Receber requisito" parent="lane_po"
+         style="rounded=1;fillColor=#cce5ff;strokeColor=#004085;fontSize=13" vertex="1">
+          <mxGeometry x="50" y="80" width="200" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="n1_register" value="N1: Registrar no backlog" parent="lane_po"
+         style="rounded=1;fillColor=#cce5ff;strokeColor=#004085;fontSize=13" vertex="1">
+          <mxGeometry x="50" y="170" width="200" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="n1_update" value="N1: Atualizar backlog" parent="lane_po"
+         style="rounded=1;fillColor=#cce5ff;strokeColor=#004085;fontSize=13" vertex="1">
+          <mxGeometry x="50" y="260" width="200" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="n1_output" value="N1: Saída – requisitos registrados" parent="lane_po"
+         style="rounded=1;fillColor=#cce5ff;strokeColor=#004085;fontSize=13" vertex="1">
+          <mxGeometry x="50" y="350" width="220" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- Arcos N1 -->
+        <mxCell id="n1_edge1" edge="1" source="n1_receive" target="n1_register" parent="lane_po">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="n1_edge2" edge="1" source="n1_register" target="n1_update" parent="lane_po">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="n1_edge3" edge="1" source="n1_update" target="n1_output" parent="lane_po">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- ========================== -->
+        <!--    CAMADA N2.1 (VERDE)     -->
+        <!-- ========================== -->
+
+        <mxCell id="n21_clarity" value="N2.1: Verificar clareza" parent="lane_dev"
+         style="rounded=1;fillColor=#d4edda;strokeColor=#155724;fontSize=13" vertex="1">
+          <mxGeometry x="70" y="80" width="220" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="n21_decision" value="Requisito compreensível?" parent="lane_dev"
+         style="rhombus;fillColor=#d4edda;strokeColor=#155724;fontSize=13" vertex="1">
+          <mxGeometry x="70" y="170" width="220" height="100" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="n21_esclarecer" value="N2.1: Solicitar esclarecimento ao stakeholder" parent="lane_stake"
+         style="rounded=1;fillColor=#d4edda;strokeColor=#155724;fontSize=13" vertex="1">
+          <mxGeometry x="40" y="260" width="240" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="n21_revisar" value="N2.1: Revisar e ajustar história" parent="lane_po"
+         style="rounded=1;fillColor=#d4edda;strokeColor=#155724;fontSize=13" vertex="1">
+          <mxGeometry x="50" y="450" width="240" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- Conexões N2.1 -->
+        <mxCell id="n21_edge1" edge="1" parent="lane_dev" source="n1_receive" target="n21_clarity">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="n21_edge2" edge="1" parent="lane_dev" source="n21_clarity" target="n21_decision">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="n21_edge_no" value="não" edge="1" parent="lane_dev" source="n21_decision" target="n21_esclarecer">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="n21_edge_yes" value="sim" edge="1" parent="lane_dev" source="n21_decision" target="n21_revisar">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="n21_edge_return" edge="1" parent="lane_stake" source="n21_esclarecer" target="n21_clarity">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="n21_edge_to_register" edge="1" parent="lane_po" source="n21_revisar" target="n1_register">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- ========================== -->
+        <!--            NOTAS           -->
+        <!-- ========================== -->
+
+        <mxCell id="note_stake" value="Nota: Stakeholder fornece insumos ou esclarece dúvidas" parent="lane_stake"
+         style="shape=note;whiteSpace=wrap;fillColor=#fff3cd;strokeColor=#856404;fontSize=12" vertex="1">
+          <mxGeometry x="40" y="500" width="240" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="note_po" value="Nota: PO registra e ajusta requisitos (N1 + N2.1)" parent="lane_po"
+         style="shape=note;whiteSpace=wrap;fillColor=#fff3cd;strokeColor=#856404;fontSize=12" vertex="1">
+          <mxGeometry x="50" y="550" width="240" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="note_dev" value="Nota: Time verifica clareza e direciona a elicitação (N2.1)" parent="lane_dev"
+         style="shape=note;whiteSpace=wrap;fillColor=#fff3cd;strokeColor=#856404;fontSize=12" vertex="1">
+          <mxGeometry x="70" y="550" width="260" height="80" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
